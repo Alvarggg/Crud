@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campo de Tiro</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('/images/diana.jpg'); /* Fondo de la página */
+            background-size: cover; /* Hace que la imagen ocupe toda la pantalla */
+            background-position: center; /* Centra la imagen */
+            background-repeat: no-repeat; /* Evita que la imagen se repita */
+            min-height: 100vh; /* Asegura que la imagen cubra toda la pantalla */
+        }
+    
+        .container {
+            background-color: rgba(255, 255, 255, 0); /* Blanco con transparencia */
+            padding: 20px;
+            border-radius: 15px; /* Bordes redondeados */
+            max-width: auto; /* Ancho máximo del contenedor */
+            margin: auto;
+        }
+    
+      
+        img {
+            display: block; /* Muestra la imagen como un bloque */
+            margin: 20px auto; /* Centra la imagen horizontalmente */
+            max-width: 100%; /* Hace que la imagen no exceda el ancho del contenedor */
+            height: auto; /* Mantiene la proporción de la imagen */
+            border-radius: 10px; /* Bordes redondeados en la imagen */
+        }
+    
+
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Campo de Tiro</h1>
+        
+        <% if (character) { %>
+            <div class="card p-3 mb-3">
+                <h2 class="card-title">Personaje: <%= character.name %></h2>
+                <img src="/images/<%= character.tipoArma %>.png" class="img-fluid mb-3" alt="Imagen del arma">
+                <p id="energyLevel" class="lead">Número de balas: <%= character.energyLevel %> ⚡️</p>
+                <div class="d-flex gap-2">
+                    <button class="btn btn-success" onclick="updateEnergy('feed')">Recargar 🍔</button>
+                    <button class="btn btn-warning" onclick="updateEnergy('play')">Disparar 😊</button>
+                </div>
+            </div>
+
+            <script>
+                function updateEnergy(action) {
+                    fetch('/game/update', {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ action: action })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        // Actualizar el nivel de energía en la interfaz
+                        document.getElementById('energyLevel').innerText = 'Número de balas: ' + data.energyLevel + ' ⚡️';
+                    })
+                    .catch(error => console.error('Error al actualizar:', error));
+                }
+            </script>
+        <% } else { %>
+            <div class="alert alert-warning">
+                <p>No hay ningún personaje seleccionado.</p>
+                <a href="/characters" class="btn btn-primary">Seleccionar Personaje</a>
+            </div>
+        <% } %>
+    </div>
+
+    <!-- Bootstrap 5 JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

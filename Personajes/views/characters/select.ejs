@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleccionar Personaje</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+   
+    <style>
+        body {
+            background-image: url('/images/armario.jpg');
+            background-size: cover; /* Hace que la imagen ocupe toda la pantalla */
+            background-position: center; /* Centra la imagen */
+            background-repeat: no-repeat; /* Evita que la imagen se repita */
+            min-height: 100vh; /* Asegura que la imagen cubra toda la pantalla */
+        }
+        
+        .container {
+            background-color: rgba(255, 255, 255, 0); /* Blanco con transparencia */
+            padding: 20px;
+            border-radius: 15px; /* Bordes redondeados */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombras suaves */
+            max-width: 600px; /* Ancho máximo del contenedor */
+            margin: auto;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        img {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px; /* Imagen con bordes redondeados */
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            padding: 10px 20px;
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Selecciona un Personaje para Jugar</h1>
+
+        <ul class="list-group mt-3">
+        <% characters.forEach(character => { %>
+            <li class="list-group-item">
+                 <!-- Nombre del personaje -->
+                 <h5><%= character.name %></h5>
+
+                 <!-- Estadísticas del personaje -->
+                <ul class="list-unstyled mb-3">
+                        <li>Tipo de arma: <%= character.tipoArma %></li>
+                        <li>Balas: <%= character.energyLevel %> ⚡️</li>
+                        <li>Cargador: <%= character.lifeExpectancy %></li>
+                </ul>
+
+                    <!-- Botón para seleccionar personaje -->
+                <form action="/game/select" method="post" class="d-inline">
+                    <input type="hidden" name="characterId" value="<%= character.id %>">
+                    <button type="submit" class="btn btn-primary">Seleccionar</button>
+                </form>
+            </li>
+        <% }); %>
+    </ul>
+
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+</body>
+</html>

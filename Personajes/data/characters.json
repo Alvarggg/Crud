@@ -1,0 +1,43 @@
+[
+  {
+    "id": 3,
+    "name": "olga",
+    "energyLevel": 87,
+    "lifeExpectancy": "43",
+    "tipoArma": "Escopeta"
+  },
+  {
+    "id": 4,
+    "name": "Supergaviota",
+    "energyLevel": "50",
+    "lifeExpectancy": "1000",
+    "tipoArma": "Escopeta"
+  },
+  {
+    "id": 5,
+    "name": "empiezo a 10",
+    "energyLevel": "100",
+    "lifeExpectancy": "10",
+    "tipoArma": "Escopeta"
+  },
+  {
+    "id": 6,
+    "name": "dfsdfad",
+    "energyLevel": "12",
+    "lifeExpectancy": "11"
+  },
+  {
+    "id": 7,
+    "name": "we",
+    "energyLevel": "2",
+    "lifeExpectancy": "12",
+    "tipoArma": "Pistola"
+  },
+  {
+    "id": 8,
+    "name": "popopo",
+    "energyLevel": "2",
+    "lifeExpectancy": "12",
+    "tipoArma": "Pistola"
+  }
+]

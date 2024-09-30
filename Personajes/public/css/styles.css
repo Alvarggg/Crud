@@ -1,0 +1,42 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0; /* Elimina cualquier margen del body */
+}
+
+h1, h2 {
+    color: #333;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+form {
+    margin: 10px 0;
+}
+
+.container {
+    flex: 1; /* Esto hace que el contenido empuje el footer hacia abajo si es necesario */
+    margin: 20px; /* Añade márgenes al contenedor */
+}
+
+footer {
+    background-color: #f8f9fa;
+    text-align: center;
+    padding: 1rem 0;
+    width: 100%;
+    font-size: 14px;
+}
